@@ -3,6 +3,7 @@ import Card from "../shared/card";
 import Button from "../atoms/Button.component";
 import { DecideTxt, TopDecisionTxt } from "../../constants";
 import CardContainer from "../shared/card/CardContainer";
+import AnitmateData from "../animate/AnitmateData";
 const DecisionContainer = () => {
   const cardData = [
     {
@@ -33,17 +34,19 @@ const DecisionContainer = () => {
       <div className="grid grid-cols-2 gap-8">
         {cardData.map((obj, index) => (
           <Card title={obj.title} key={index}>
-            <div className="flex flex-col my-3">
-              <div className="my-1 text-gray-400">{obj.description}</div>
-              <div className="flex flex-row my-1 justify-between">
-                <div className="text-gray-400">
-                  Due Date:{" "}
-                  <span className="text-gray-200">{obj.dueDate} </span>
-                </div>
+            <AnitmateData>
+              <div className="flex flex-col my-3">
+                <div className="my-1 text-gray-400">{obj.description}</div>
+                <div className="flex flex-row my-1 justify-between">
+                  <div className="text-gray-400">
+                    Due Date:{" "}
+                    <span className="text-gray-200">{obj.dueDate} </span>
+                  </div>
 
-                <Button> {DecideTxt} </Button>
+                  <Button> {DecideTxt} </Button>
+                </div>
               </div>
-            </div>
+            </AnitmateData>
           </Card>
         ))}
       </div>
