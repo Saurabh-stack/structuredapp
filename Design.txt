@@ -1,0 +1,50 @@
+    Design the Architecture
+	    Forms
+		    screens
+		    components
+		    utilities
+		database connectivity
+		    state management
+		    styles
+		    assets
+		    environment
+            Routing
+            Hooks
+            Constants
+		jenkins configuration
+		docker configuration
+		Test case
+
+Now configure further
+1. styles	
+	Tailwind css
+		install
+		npm install -D tailwindcss
+		
+		to create configuration file
+		npx tailwindcss init -p
+
+		update configuration file
+
+		update index.css file to accept tailwindcss
+
+		Restart
+2. Give basic styles to app.js
+3. Create Header/Footer
+	3.1 For static text, create and use constant file
+4. Create Login page (html and css part only) and check by placing it in App.js
+	4.1 Create shared components like textbox, buttons
+5. Create Dashboard (html and css part only) and check by plaing it in app.js
+6. Create Route for Login and Dashboard page
+7. Give login funcationality to login page 
+8. Create Protected Route
+
+
+
+=======================
+Tailwind
+Reusable components
+Formik
+Yup validation
+Navigation
+Rechart

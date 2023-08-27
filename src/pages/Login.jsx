@@ -1,13 +1,7 @@
-import React from 'react'
+import Login from "../components/inputForms/Login.component";
 
-const Login = () => {
-  return (
-    <div>
-      <div>img</div>
-      
-      <div>text</div>
-    </div>
-  )
-}
+const LoginPage = () => {
+  return <Login />;
+};
 
-export default Login
+export default LoginPage;
