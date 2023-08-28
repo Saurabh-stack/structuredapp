@@ -8,12 +8,8 @@ const Card = ({ noHover, title, className, children, ...rest }) => {
       !noHover && "hover:border-signature_green hover:shadow-2xl"
     } md:before:hover:!opacity-100 before:hover:!opacity-0`)}
     >
-      <div className={`flex flex-row items-center justify-between`}>
-        <div className={`font-semibold text-base md:text-lg w-full`}>
-          {title}
-        </div>
-      </div>
-      <div className="h-full w-full">{children}</div>
+      {title && <div className={`flex text-base text-xl w-full`}>{title}</div>}
+      <div className="h-full w-full flex">{children}</div>
     </div>
   );
 };
