@@ -30,7 +30,7 @@ const DecisionContainer = () => {
       dueDate: "10 Aug, 2023",
     },
   ];
-
+  const [data] = useState(() => [...USERS]);
   const columnHelper = createColumnHelper();
   const columns = [
     columnHelper.accessor("profile", {
@@ -46,7 +46,7 @@ const DecisionContainer = () => {
       header: "Last Name",
     }),
   ];
-  const [data] = useState(() => [...USERS]);
+
   return (
     <CardContainer>
       <span className="text-2xl text-gray-300">{TopDecisionTxt}</span>

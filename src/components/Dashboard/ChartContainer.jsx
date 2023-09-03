@@ -71,7 +71,7 @@ const ChartContainer = () => {
             <PieChartActiveShape data={chartBuData[3].data} />
           </Card>
         </div>
-        <div className="gap-5">
+        <div className="grid gap-5">
           <Card title={"Annual Internal Satisfaction Survey"}>
             <div className="my-10"></div>
             <BiaxialBarChart

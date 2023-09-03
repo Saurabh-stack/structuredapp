@@ -104,6 +104,7 @@ const DataTableWithPagination = ({ columns, data }) => {
             className="border p-1 rounded w-16 bg-transparent"
           />
         </span>
+        {/* 
         <select
           value={table.getState().pagination.pageSize}
           onChange={(e) => {
@@ -112,11 +113,16 @@ const DataTableWithPagination = ({ columns, data }) => {
           className="p-2 bg-transparent"
         >
           {[10, 20, 30, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
+            <option
+              key={pageSize}
+              value={pageSize}
+              className="bg-signature_light"
+            >
               Show {pageSize}
             </option>
           ))}
         </select>
+        */}
       </div>
     </div>
   );
