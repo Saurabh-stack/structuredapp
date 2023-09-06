@@ -7,12 +7,17 @@ import CardContainer from "../../../components/shared/card/CardContainer";
 import Card from "../../../components/shared/card";
 import Button from "../../../components/atoms/Button.component";
 import { DecideTxt, TopDecisionTxt } from "../../../constants";
-
+import { useNavigate } from "react-router";
 const DecisionContainer = () => {
+  const navigate = useNavigate();
   const queryDecisions = useQuery({
     queryKey: ["topDecisions"],
     queryFn: () => xhrClient.get("TopDecisions").then((res) => res?.data),
   });
+
+  const handleDecideClick = (decisionId) => {
+    navigate(`/decision/${decisionId}`);
+  };
 
   return (
     <CardContainer>
@@ -31,8 +36,8 @@ const DecisionContainer = () => {
 
       {queryDecisions.data && (
         <div className="grid grid-cols-4 gap-8 mt-5 mb-5">
-          {queryDecisions.data.map((obj, index) => (
-            <Card title={obj.title} key={index}>
+          {queryDecisions.data.map((obj) => (
+            <Card title={obj.title} key={obj.id}>
               <div className="flex flex-col my-3 w-full justify-between">
                 <div className="my-1 text-gray-400">{obj.description}</div>
                 <div className="flex my-1 justify-between items-center">
@@ -40,7 +45,9 @@ const DecisionContainer = () => {
                     Due Date:{" "}
                     <span className="text-gray-200">{obj.dueDate} </span>
                   </div>
-                  <Button> {DecideTxt} </Button>
+                  <Button onClick={() => handleDecideClick(obj.id)}>
+                    {DecideTxt}
+                  </Button>
                 </div>
               </div>
             </Card>
