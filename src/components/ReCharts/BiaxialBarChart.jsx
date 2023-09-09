@@ -9,11 +9,20 @@ import {
   Legend,
 } from "recharts";
 
-const BiaxialBarChart = ({ data }) => {
+const BiaxialBarChart = ({
+  data,
+  width,
+  height,
+  xAxisId,
+  yAxisLeftId,
+  yAxisRightId,
+  barDataKey,
+  barDataColor,
+}) => {
   return (
     <BarChart
-      width={800}
-      height={620}
+      width={width}
+      height={height}
       data={data}
       margin={{
         top: 20,
@@ -22,14 +31,18 @@ const BiaxialBarChart = ({ data }) => {
         bottom: 5,
       }}
     >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
-      <YAxis yAxisId="right" orientation="right" stroke="#82ca9d" />
+      <CartesianGrid strokeDasharray="5 5" />
+      <XAxis dataKey={xAxisId} />
+      <YAxis yAxisId={yAxisLeftId} orientation={yAxisLeftId} stroke="#8884d8" />
+      <YAxis
+        yAxisId={yAxisRightId}
+        orientation={yAxisRightId}
+        stroke="#82ca9d"
+      />
       <Tooltip />
-      <Legend />
-      <Bar yAxisId="left" dataKey="po" fill="#8884d8" />
-      <Bar yAxisId="right" dataKey="neg" fill="#82ca9d" />
+      {barDataKey?.map((obj) => (
+        <Bar yAxisId={obj.position} dataKey={obj.dataKey} fill={obj.color} />
+      ))}
     </BarChart>
   );
 };
