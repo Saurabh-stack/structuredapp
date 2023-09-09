@@ -30,7 +30,18 @@ const ChartContainer = () => {
         <div className="grid gap-5">
           <Card title={"Annual Internal Satisfaction Survey"}>
             <div className="my-10"></div>
-            <BiaxialBarChart data={annualSurveyData?.data} />
+            <BiaxialBarChart
+              data={annualSurveyData?.data}
+              width={800}
+              height={620}
+              xAxisId={"name"}
+              yAxisLeftId={"left"}
+              yAxisRightId={"right"}
+              barDataKey={[
+                { dataKey: "po", color: "#8884d8", position: "left" },
+                { dataKey: "neg", color: "#82ca9d", position: "right" },
+              ]}
+            />
           </Card>
         </div>
       </div>
