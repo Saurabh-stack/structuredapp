@@ -14,7 +14,6 @@ const Dashboard = () => {
     <>
       <DecisionContainer />
       <ChartContainer />
-      <EmployeeTableContainer />
     </>
   );
 };
