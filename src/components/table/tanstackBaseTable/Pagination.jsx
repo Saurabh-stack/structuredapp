@@ -1,4 +1,3 @@
-import React from "react";
 //import { classNames } from "../../../utilities/classNames";
 const Pagination = ({
   fnPreviousPage,
@@ -37,7 +36,7 @@ const Pagination = ({
       <span className="flex items-center gap-1">
         <div>Page</div>
         <strong>
-          {currPage + 1} of {totalPage}
+          {currPage.pagination.pageIndex + 1} of {totalPage}
         </strong>
       </span>
       {enableGoToPage && (
@@ -45,7 +44,7 @@ const Pagination = ({
           | Go to page:
           <input
             type="number"
-            defaultValue={currPage + 1}
+            defaultValue={currPage.pagination.pageIndex + 1}
             onChange={(e) => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               setPageIndex(page);
@@ -56,7 +55,7 @@ const Pagination = ({
       )}
       {enablePageSize && (
         <select
-          value={currPage}
+          value={currPage.pagination.pageSize}
           onChange={(e) => {
             setPageSize(Number(e.target.value));
           }}
