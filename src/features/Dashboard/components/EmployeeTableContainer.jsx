@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { createColumnHelper } from "@tanstack/react-table";
 import { USERS } from "../../../components/table/Data";
-import DataTableWithPagination from "../../../components/table/DataTableWithPagination";
 import Card from "../../../components/shared/card";
 import CardContainer from "../../../components/shared/card/CardContainer";
+import BaseTable from "../../../components/table/tanstackBaseTable/BaseTable";
 const EmployeeTableContainer = () => {
   const [data] = useState(() => [...USERS]);
   const columnHelper = createColumnHelper();
@@ -25,7 +25,12 @@ const EmployeeTableContainer = () => {
     <CardContainer>
       <div className="grid grid-cols-1 gap-8 mt-5 mb-5">
         <Card>
-          <DataTableWithPagination data={data} columns={columns} />
+          <BaseTable
+            columns={columns}
+            fnFetchData={new Promise(() => data)}
+            defaultData={data}
+            className={`border border-gray-700 text-left w-full`}
+          />
         </Card>
       </div>
     </CardContainer>
