@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createColumnHelper } from "@tanstack/react-table";
 import BaseTable from "../../../components/table/tanstackBaseTable/BaseTable";
 import WorkBasic from "./WorkBasic";
+import ChakraModal from "../../../components/modal/ChakraModal";
 const NewHieringDetails = () => {
   const [showTable, setShowTable] = useState(false);
   const [getTable, setTable] = useState(0);
@@ -92,8 +93,11 @@ const NewHieringDetails = () => {
   ];
 
   const fetchData = async (options) => {
-    const data = await xhrClient.get("BenchEmployees").then((res) => res?.data);
-    console.log("data::", data);
+    let api = "";
+    if (getTable === 1) {
+      api = "BenchEmployees";
+    }
+    const data = await xhrClient.get(api).then((res) => res?.data);
     return {
       rows: data?.slice(
         options.pageIndex * options.pageSize,
@@ -104,20 +108,11 @@ const NewHieringDetails = () => {
   };
 
   const renderSubComponent = (row) => {
-    return (
-      <WorkBasic
-        row={row}
-        considerHandler={() => {
-          alert("clicked");
-        }}
-        rejectHandler={() => {}}
-      />
-    );
+    return <WorkBasic row={row} />;
   };
-
   return (
     <CardContainer customClass={`border-0`}>
-      <div className="grid grid-rows-2">
+      <div className="flex flex-col">
         <div className="grid grid-cols-4 gap-8 mt-5 mb-5">
           <InfoCard
             title={"Manager and Business Info"}
@@ -151,8 +146,6 @@ const NewHieringDetails = () => {
           {showTable && (
             <div className="grid grid-cols-4 mx-0 my-0">
               <div className="grid col-span-4">
-                1. Id 2. EmployeeName 3. Skills 4. Availabile(days) 5. Matching
-                percentage 6. Actions (Download, Reject, Verify)
                 <Card>
                   <BaseTable
                     columns={columns}
@@ -161,7 +154,16 @@ const NewHieringDetails = () => {
                     getRowCanExpand={() => true}
                     className={`border border-gray-700 text-left w-full`}
                   />
-                  <PieChartActiveShape data={buwiseempoccupancy.data[0].data} />
+                  <Card className={`border-0 mx-4 my-14`}>
+                    <div className="flex flex-col my-2 w-full">
+                      <ul>
+                        <li>Total 5 profile shared</li>
+                        <li>Total 3 are selected</li>
+                        <li>Total 2 joined the project</li>
+                        <li>Mimum 2 more profile need to share</li>
+                      </ul>
+                    </div>
+                  </Card>
                 </Card>
               </div>
             </div>

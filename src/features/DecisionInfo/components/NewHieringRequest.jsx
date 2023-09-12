@@ -1,16 +1,67 @@
 import CardContainer from "../../../components/shared/card/CardContainer";
 import Card from "../../../components/shared/card";
-import Button from "../../../components/atoms/Button.component";
 import { useNavigate } from "react-router";
 const NewHieringRequest = () => {
   const navigate = useNavigate();
   const newHireing = {
     data: [
-      { id: 11250, critical: "yes", title: "Sr. Software Engineer" },
-      { id: 11251, critical: "yes", title: "Sr. Software Engineer" },
-      { id: 11252, title: "Sr. Software Engineer" },
-      { id: 11253, title: "Sr. Software Engineer" },
-      { id: 11254, title: "Sr. Software Engineer" },
+      {
+        id: 11250,
+        critical: "yes",
+        title: "Sr. Software Engineer",
+        expRange: "6-8 years",
+        primarySkills: ".net, .netCore, C#",
+        secondarySkills: "ReactJs/Angular, AWS or any cloud, Unit testing",
+        extraSkills: "CI/CD",
+        totalOpenings: 5,
+        matchingBench: 2,
+        matchingNew: 7,
+      },
+      {
+        id: 11251,
+        critical: "yes",
+        title: "Sr. Software Engineer",
+        expRange: "6-8 years",
+        primarySkills: ".net, .netCore, C#",
+        secondarySkills: "ReactJs/Angular, AWS or any cloud, Unit testing",
+        extraSkills: "CI/CD",
+        totalOpenings: 5,
+        matchingBench: 2,
+        matchingNew: 7,
+      },
+      {
+        id: 11252,
+        title: "Sr. Software Engineer",
+        expRange: "6-8 years",
+        primarySkills: ".net, .netCore, C#",
+        secondarySkills: "ReactJs/Angular, AWS or any cloud, Unit testing",
+        extraSkills: "CI/CD",
+        totalOpenings: 5,
+        matchingBench: 2,
+        matchingNew: 7,
+      },
+      {
+        id: 11253,
+        title: "Sr. Software Engineer",
+        expRange: "6-8 years",
+        primarySkills: ".net, .netCore, C#",
+        secondarySkills: "ReactJs/Angular, AWS or any cloud, Unit testing",
+        extraSkills: "CI/CD",
+        totalOpenings: 5,
+        matchingBench: 2,
+        matchingNew: 7,
+      },
+      {
+        id: 11254,
+        title: "Sr. Software Engineer",
+        expRange: "6-8 years",
+        primarySkills: ".net, .netCore, C#",
+        secondarySkills: "ReactJs/Angular, AWS or any cloud, Unit testing",
+        extraSkills: "CI/CD",
+        totalOpenings: 5,
+        matchingBench: 2,
+        matchingNew: 7,
+      },
     ],
   };
   const handleHieringDetail = (id) => {
@@ -20,7 +71,7 @@ const NewHieringRequest = () => {
     <CardContainer customClass={`border-0`}>
       <div className="grid grid-cols-2 gap-8 mt-5 mb-5">
         {newHireing.data.map((obj) => (
-          <Card title={obj.title + " | 6-8 years"} key={obj.id}>
+          <Card title={obj.title + " | " + obj.expRange} key={obj.id}>
             <div
               className="grid border-2 border-b-0 my-2 w-full mb-5 cursor-pointer"
               onClick={() => handleHieringDetail(obj.id)}
@@ -30,7 +81,7 @@ const NewHieringRequest = () => {
                   Experience Range:
                 </div>
                 <div className="grid col-span-3 bg-gray-300 text-black font-bold px-5 items-center ">
-                  6-8 years
+                  {obj.expRange}
                 </div>
               </div>
               <div className="border-b-2 text-gray-400 grid grid-cols-4">
@@ -38,7 +89,7 @@ const NewHieringRequest = () => {
                   Primary skills :
                 </div>
                 <div className="grid col-span-3 bg-gray-300 text-black font-bold px-5 items-center">
-                  .net, .netCore, C#
+                  {obj.primarySkills}
                 </div>
               </div>
               <div className="border-b-2 text-gray-400 grid grid-cols-4">
@@ -46,7 +97,7 @@ const NewHieringRequest = () => {
                   Secondary skills :
                 </div>
                 <div className="grid col-span-3 bg-gray-300 text-black font-bold px-5 items-center">
-                  ReactJs/Angular, AWS or any cloud, Unit testing,
+                  {obj.secondarySkills}
                 </div>
               </div>
               <div className="border-b-2 text-gray-400 grid grid-cols-4">
@@ -54,7 +105,7 @@ const NewHieringRequest = () => {
                   Additional skills :
                 </div>
                 <div className="grid col-span-3 bg-gray-300 text-black font-bold px-5 items-center">
-                  CI/CD
+                  {obj.extraSkills}
                 </div>
               </div>
               <div className="border-b-2 grid grid-cols-4">
@@ -62,13 +113,13 @@ const NewHieringRequest = () => {
                   Total openings:
                 </div>
                 <div className="grid bg-gray-300 text-black font-bold px-5 items-center">
-                  5
+                  {obj.totalOpenings}
                 </div>
                 <div className="grid col-span-2 text-gray-100">
                   <div className="grid grid-rows-2 bg-gray-700 h-full">
                     <div className="grid grid-cols-2">
                       <div className="grid border-2 px-2 items-center justify-center">
-                        Matching New Resources
+                        Matching Bench Resource
                       </div>
                       <div className="grid border-2 px-2 items-center justify-center">
                         Matching New Resources
@@ -76,10 +127,10 @@ const NewHieringRequest = () => {
                     </div>
                     <div className="grid grid-cols-2 bg-gray-300 text-black font-bold">
                       <div className="grid border-2 items-center justify-center">
-                        2
+                        {obj.matchingBench}
                       </div>
                       <div className="grid border-2 items-center justify-center">
-                        2
+                        {obj.matchingNew}
                       </div>
                     </div>
                   </div>
