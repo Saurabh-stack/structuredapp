@@ -18,7 +18,7 @@ import Card from "../../../components/shared/card";
 import InfoCard from "../../../components/shared/card/InfoCard";
 import Pills from "../../../components/atoms/Pills.component";
 import BaseTable from "../../../components/table/tanstackBaseTable/BaseTable";
-import WorkBasic from "./WorkBasic";
+import ProfileSummary from "./ProfileSummary";
 import ProfilesInProcess from "./ProfilesInProcess";
 import Button from "../../../components/atoms/Button.component";
 
@@ -129,7 +129,13 @@ const NewHieringDetails = () => {
   };
 
   const renderSubComponent = (row) => {
-    return <WorkBasic row={row} />;
+    return (
+      <ProfileSummary
+        row={row}
+        proceedBtn={"Send to Manager"}
+        cancelBtn={"Reject Candidate"}
+      />
+    );
   };
   return (
     <CardContainer customClass={`border-0`}>

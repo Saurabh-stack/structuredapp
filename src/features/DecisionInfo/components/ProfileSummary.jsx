@@ -4,10 +4,39 @@ import Button from "../../../components/atoms/Button.component";
 import ChakraModal from "../../../components/modal/ChakraModal";
 import { Textarea } from "@chakra-ui/react";
 import SimplePieChart from "../../../components/ReCharts/SimplePieChart";
-const WorkBasic = ({ row, considerHandler, fnRejectHandler }) => {
+import HorizontalStepIndicator from "../../../components/stepIndicator/StepIndicator";
+const ProfileSummary = ({
+  row,
+  profileProgressStatus,
+  fnProceedHandler,
+  fnCancelHandler,
+  proceedBtn,
+  cancelBtn,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const proceedHandler = () => {
+    if (fnProceedHandler) fnProceedHandler();
+    onOpen();
+  };
+
+  const cancelHandler = () => {
+    if (fnCancelHandler) fnCancelHandler();
+    onClose();
+  };
+
   return (
     <div className="flex flex-col my-3 gap-y-3 w-full justify-between">
+      {profileProgressStatus && (
+        <Card title={"Progress Status Bar"} className={"w-full"}>
+          <HorizontalStepIndicator
+            steps={profileProgressStatus.steps}
+            size={"lg"}
+            colorScheme={profileProgressStatus.colorScheme}
+            className={"mt-5 mb-3"}
+            activeStep={profileProgressStatus.activeStep}
+          />
+        </Card>
+      )}
       <div className="flex flex-row w-full gap-2">
         <Card title={"Summary"} className={"ml-4"}>
           <div className="flex flex-col my-2">
@@ -64,8 +93,8 @@ const WorkBasic = ({ row, considerHandler, fnRejectHandler }) => {
         </Card>
       </div>
       <div className="flex flex-row w-full gap-3 justify-end">
-        <Button onClick={onClose}>Reject Candidate</Button>
-        <Button onClick={onOpen}>Send to Manager</Button>
+        {cancelBtn && <Button onClick={cancelHandler}>{cancelBtn}</Button>}
+        {proceedBtn && <Button onClick={proceedHandler}>{proceedBtn}</Button>}
       </div>
       {isOpen && (
         <ChakraModal
@@ -88,4 +117,4 @@ const WorkBasic = ({ row, considerHandler, fnRejectHandler }) => {
   );
 };
 
-export default WorkBasic;
+export default ProfileSummary;

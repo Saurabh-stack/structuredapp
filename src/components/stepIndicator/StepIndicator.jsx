@@ -2,23 +2,32 @@ import React from "react";
 import {
   Step,
   StepDescription,
-  StepIcon,
   StepIndicator,
-  StepNumber,
   StepSeparator,
   StepStatus,
   StepTitle,
   Stepper,
-  useSteps,
   Box,
 } from "@chakra-ui/react";
-const HorizontalStepIndicator = ({ steps, size, colorScheme }) => {
-  const { activeStep } = useSteps({
+import { classNames } from "../../utilities/classNames";
+const HorizontalStepIndicator = ({
+  steps,
+  size,
+  colorScheme,
+  activeStep,
+  className,
+}) => {
+  /*const { activeStep } = useSteps({
     index: 1,
     count: steps.length,
-  });
+  });*/
   return (
-    <Stepper size={size} colorScheme={colorScheme} index={activeStep}>
+    <Stepper
+      size={size}
+      colorScheme={colorScheme}
+      index={activeStep}
+      className={classNames(`w-full`, className)}
+    >
       {steps.map((step, index) => (
         <Step key={index}>
           <StepIndicator>

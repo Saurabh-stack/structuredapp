@@ -5,7 +5,7 @@ import xhrClient from "../../../utilities/DataRequest";
 import Pills from "../../../components/atoms/Pills.component";
 import Card from "../../../components/shared/card";
 import BaseTable from "../../../components/table/tanstackBaseTable/BaseTable";
-import WorkBasic from "./WorkBasic";
+import ProfileSummary from "./ProfileSummary";
 import ChakraModal from "../../../components/modal/ChakraModal";
 
 const ProfilesInProcess = ({ isOpen, onClose }) => {
@@ -77,7 +77,26 @@ const ProfilesInProcess = ({ isOpen, onClose }) => {
     };
   };
   const renderSubComponent = (row) => {
-    return <WorkBasic row={row} />;
+    return (
+      <ProfileSummary
+        row={row}
+        profileProgressStatus={{
+          steps: [
+            { title: "HR Selected", description: "Initial Selection" },
+            { title: "Manager Review", description: "Initial Review" },
+            { title: "Interview", description: "Internal Interview" },
+            { title: "Client Discussion", description: "Client Interview" },
+            {
+              title: "Manager Finalized",
+              description: "Final Discussion",
+            },
+            { title: "Project OnBoard", description: "Project OnBoarding" },
+          ],
+          activeStep: 2,
+          colorScheme: "yellow",
+        }}
+      />
+    );
   };
   return (
     <ChakraModal
