@@ -15,7 +15,7 @@ const Pills = ({ isBadge, text, type, disableClick }) => {
         : type === "more"
         ? "bg-teal-400 hover:bg-teal-600 text-teal-800"
         : type === "less"
-        ? "bg-green-300 hover:bg-green-600 text-green-800"
+        ? "bg-green-800 hover:bg-green-600 text-green-200"
         : "bg-red-300 hover:bg-red-700 text-red-900"
     }`}
     >
