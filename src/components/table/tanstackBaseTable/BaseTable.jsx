@@ -22,6 +22,7 @@ const BaseTable = ({
   fnFetchData,
   getRowCanExpand,
   renderSubComponent,
+  enableForceRender,
 }) => {
   const rerender = useReducer(() => ({}), {})[1];
   const [{ pageIndex, pageSize }, setPagination] = useState({
@@ -74,9 +75,11 @@ const BaseTable = ({
         "Loading..."
       ) : (
         <>
-          <div className="mb-5">
-            <Button onClick={() => rerender()}>Force Rerender</Button>
-          </div>
+          {enableForceRender && (
+            <div className="mb-5">
+              <Button onClick={() => rerender()}>Force Rerender</Button>
+            </div>
+          )}
           <ASimpleTable className={classNames(``, className)}>
             <ColumnHeader
               headerGroups={table.getHeaderGroups()}

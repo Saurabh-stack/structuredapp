@@ -1,5 +1,5 @@
 import React from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell } from "recharts";
 
 const SimplePieChart = ({ data, colors, fullCircle }) => {
   const COLORS = colors ? colors : ["#00C49F", "#0088FE", "#FFBB28"];

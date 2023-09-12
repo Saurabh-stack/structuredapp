@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useDisclosure } from "@chakra-ui/react";
 import Card from "../../../components/shared/card";
 import Button from "../../../components/atoms/Button.component";
