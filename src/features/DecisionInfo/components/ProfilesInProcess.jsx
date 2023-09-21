@@ -80,6 +80,34 @@ const ProfilesInProcess = ({ isOpen, onClose }) => {
     return (
       <ProfileSummary
         row={row}
+        evaluationComments={[
+          {
+            commentTitle: "Project OnBoard",
+            comments: "Pending",
+          },
+          {
+            commentTitle: "Manager Finalized",
+            comments: "Pending",
+          },
+          {
+            commentTitle: "Client Discussion",
+            comments: "Pending",
+          },
+          {
+            commentTitle: "1st Round",
+            comments:
+              "Candidate worked as full stack for 6 years. Having knowledge of Reactjs. Missing experience in Typescript but have knowledge. Total 3/5",
+          },
+
+          {
+            commentTitle: "Manager Review",
+            comments: "Please schedule interview",
+          },
+          {
+            commentTitle: "HR Comments",
+            comments: "Profile Matching. Please review",
+          },
+        ]}
         profileProgressStatus={{
           steps: [
             { title: "HR Selected", description: "Initial Selection" },

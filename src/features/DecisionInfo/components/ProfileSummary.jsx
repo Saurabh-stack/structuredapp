@@ -7,6 +7,7 @@ import SimplePieChart from "../../../components/ReCharts/SimplePieChart";
 import HorizontalStepIndicator from "../../../components/stepIndicator/StepIndicator";
 const ProfileSummary = ({
   row,
+  evaluationComments,
   profileProgressStatus,
   fnProceedHandler,
   fnCancelHandler,
@@ -25,20 +26,33 @@ const ProfileSummary = ({
   };
 
   return (
-    <div className="flex flex-col my-3 gap-y-3 w-full justify-between">
+    <div className="flex flex-col my-3 gap-y-3 w-full justify-between border-0 border-red-600">
       {profileProgressStatus && (
-        <Card title={"Progress Status Bar"} className={"w-full"}>
-          <HorizontalStepIndicator
-            steps={profileProgressStatus.steps}
-            size={"lg"}
-            colorScheme={profileProgressStatus.colorScheme}
-            className={"mt-5 mb-3"}
-            activeStep={profileProgressStatus.activeStep}
-          />
-        </Card>
+        <>
+          <Card title={"Progress Status Bar"} className={"ml-4 mr-4"}>
+            <HorizontalStepIndicator
+              steps={profileProgressStatus.steps}
+              size={"lg"}
+              colorScheme={profileProgressStatus.colorScheme}
+              className={"mt-5 mb-3"}
+              activeStep={profileProgressStatus.activeStep}
+            />
+          </Card>
+          <Card title={"Evaluation Comments"} className={"ml-4 mr-4"}>
+            <div className="grid grid-cols-3 gap-2 mt-5">
+              {evaluationComments?.map((obj) => {
+                return (
+                  <Card title={obj?.commentTitle} className={``}>
+                    {obj?.comments}
+                  </Card>
+                );
+              })}
+            </div>
+          </Card>
+        </>
       )}
       <div className="flex flex-row w-full gap-2">
-        <Card title={"Summary"} className={"ml-4"}>
+        <Card title={"Summary"} className={"ml-4 w-full"}>
           <div className="flex flex-col my-2">
             <ul>
               {row?.original?.summary?.map((value) => (
