@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import HeaderLogo from "../../asserts/Logo.png";
 import { HeaderContactBtn, HeaderTxt_NoAccount } from "../../constants";
 import Button from "../atoms/Button.component";
+import useAuth from "../../hooks/useAuth";
 const Header = () => {
+  const { username, status } = useAuth();
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -23,8 +25,14 @@ const Header = () => {
       <div className="flex flex-row justify-between items-center">
         <img className="h-10 w-10" src={HeaderLogo} alt="logo" />
         <div className="flex flex-row items-center space-x-3 text-sm">
-          <span>{HeaderTxt_NoAccount}</span>
-          <Button customClass="text-gray">{HeaderContactBtn}</Button>
+          {username === "" ? (
+            <>
+              <span>{HeaderTxt_NoAccount}</span>
+              <Button customClass="text-gray">{HeaderContactBtn}</Button>
+            </>
+          ) : (
+            <span>Welcome {username}</span>
+          )}
         </div>
       </div>
     </div>
