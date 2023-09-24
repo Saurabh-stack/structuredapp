@@ -3,7 +3,7 @@ import Button from "../atoms/Button.component";
 import { BtnSignIn } from "../../constants";
 import { useFormik } from "formik";
 import { signUpSchema } from "./schema";
-//import SelectBox from "../atoms/SelectBox";
+import SelectBox from "../atoms/SelectBox";
 const SignUp = () => {
   const initialValues = {
     inFullName: "",
@@ -81,6 +81,17 @@ const SignUp = () => {
             : ""
         }
       />
+      <SelectBox
+        name={"inRole"}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        id={"inRole"}
+      >
+        <option value="User">User</option>
+        <option value="Manager">Manager</option>
+        <option value="BU HR">BU HR</option>
+        <option value="DeptHead">Departmental Head</option>
+      </SelectBox>
 
       <Button disable={!isValid} isSubmitting={isSubmitting}>
         {BtnSignIn}
