@@ -29,7 +29,10 @@ const ProfileSummary = ({
     <div className="flex flex-col my-3 gap-y-3 w-full justify-between border-0 border-red-600">
       {profileProgressStatus && (
         <>
-          <Card title={"Progress Status Bar"} className={"ml-4 mr-4"}>
+          <Card
+            title={"Progress Status Bar"}
+            className={"ml-4 mr-4  border-8 border-teal-900 bg-slate-600"}
+          >
             <HorizontalStepIndicator
               steps={profileProgressStatus.steps}
               size={"lg"}
@@ -38,11 +41,17 @@ const ProfileSummary = ({
               activeStep={profileProgressStatus.activeStep}
             />
           </Card>
-          <Card title={"Evaluation Comments"} className={"ml-4 mr-4"}>
-            <div className="grid grid-cols-3 gap-2 mt-5">
+          <Card
+            title={"Evaluation Comments"}
+            className={"ml-4 mr-4 bg-slate-900"}
+          >
+            <div className="grid grid-cols-3 gap-5 mt-5 pb-5">
               {evaluationComments?.map((obj) => {
                 return (
-                  <Card title={obj?.commentTitle} className={``}>
+                  <Card
+                    title={obj?.commentTitle}
+                    className={`bg-slate-500 rounded-3xl`}
+                  >
                     {obj?.comments}
                   </Card>
                 );

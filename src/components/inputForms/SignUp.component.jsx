@@ -2,13 +2,15 @@ import TextInput from "../atoms/TextInput";
 import Button from "../atoms/Button.component";
 import { BtnSignIn } from "../../constants";
 import { useFormik } from "formik";
-import { loginSchema } from "./schema";
-import { useNavigate } from "react-router";
-const Login = () => {
-  const navigate = useNavigate();
+import { signUpSchema } from "./schema";
+//import SelectBox from "../atoms/SelectBox";
+const SignUp = () => {
   const initialValues = {
+    inFullName: "",
     inEmail: "",
     inPassword: "",
+    inConfirmPassword: "",
+    inRole: "",
   };
   const {
     values,
@@ -22,7 +24,7 @@ const Login = () => {
     isValid,
   } = useFormik({
     initialValues,
-    validationSchema: loginSchema,
+    validationSchema: signUpSchema,
     validateOnChange: true,
     validateOnBlur: false,
     isInitialValid: false,
@@ -30,12 +32,22 @@ const Login = () => {
       setTimeout(() => {
         setSubmitting(false);
       }, 3000);
-      navigate("/dashboard");
     },
   });
 
   return (
     <form onSubmit={handleSubmit} className="py-0 pl-0 flex-grow">
+      <TextInput
+        type="text"
+        name="inFullName"
+        placeholder="Full Name"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        values={values}
+        errorMessage={
+          errors.inFullName && touched.inFullName ? errors.inFullName : ""
+        }
+      />
       <TextInput
         type="email"
         name="inEmail"
@@ -56,6 +68,20 @@ const Login = () => {
           errors.inPassword && touched.inPassword ? errors.inPassword : ""
         }
       />
+      <TextInput
+        type="password"
+        name="inConfirmPassword"
+        placeholder="Confirm Password"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        values={values}
+        errorMessage={
+          errors.inConfirmPassword && touched.inConfirmPassword
+            ? errors.inConfirmPassword
+            : ""
+        }
+      />
+
       <Button disable={!isValid} isSubmitting={isSubmitting}>
         {BtnSignIn}
       </Button>
@@ -63,4 +89,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
